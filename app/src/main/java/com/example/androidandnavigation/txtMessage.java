@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -25,7 +26,7 @@ public class txtMessage extends AppCompatActivity {
         send = (Button) findViewById(R.id.btnSendMessage);
         send.setEnabled(false);
 
-        if (checkPermission(android.Manifest.permission.SEND_SMS)){
+        if (checkPermission(Manifest.permission.SEND_SMS)){
             send.setEnabled(true);
         }
         else{
@@ -59,7 +60,7 @@ public class txtMessage extends AppCompatActivity {
             return;
         }
 
-        if (checkPermission(android.Manifest.permission.SEND_SMS)){
+        if (checkPermission(Manifest.permission.SEND_SMS)){
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
             Toast.makeText(this, "Your message has been sent", Toast.LENGTH_LONG).show();
