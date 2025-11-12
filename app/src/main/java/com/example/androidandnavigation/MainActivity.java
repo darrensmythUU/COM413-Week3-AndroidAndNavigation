@@ -1,11 +1,15 @@
 package com.example.androidandnavigation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -32,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i = new Intent(MainActivity.this, WebSearch.class);
                 i.putExtra(webMessage, searchFor);
+                startActivity(i);
+            }
+        });
+
+        Button text = (Button) findViewById(R.id.btn_text);
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, txtMessage.class);
                 startActivity(i);
             }
         });
